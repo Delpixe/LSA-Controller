@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmeagoLS", "SmeagoLS\SmeagoLS.csproj", "{953007F8-B420-4F6C-A8DE-8B7FDBEE2497}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LS_Controller", "LS_Controller\LS_Controller.csproj", "{953007F8-B420-4F6C-A8DE-8B7FDBEE2497}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

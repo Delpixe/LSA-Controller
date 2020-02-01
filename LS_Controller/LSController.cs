@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SmeagoLS
+namespace LS_Controller
 {
-    static class Program
+    static class LSController
     {
         /// <summary>
         /// Punto di ingresso principale dell'applicazione.
@@ -14,9 +14,11 @@ namespace SmeagoLS
         [STAThread]
         static void Main()
         {
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SmeagoLS());
+            Application.Run(new MainMenu());
+
         }
     }
 }
