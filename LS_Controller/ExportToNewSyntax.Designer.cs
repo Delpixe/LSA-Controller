@@ -62,13 +62,14 @@
             this.checkedListBox = new System.Windows.Forms.CheckedListBox();
             this.Date_dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.Date_ApplyDate_check = new System.Windows.Forms.CheckBox();
-            this.txtOutput = new System.Windows.Forms.TextBox();
             this.ObjectType_label = new System.Windows.Forms.Label();
             this.ObjType_listBox = new System.Windows.Forms.ListBox();
+            this.ShowOutput_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Launch
             // 
+            this.Launch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Launch.BackColor = System.Drawing.SystemColors.Window;
             this.Launch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Launch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -350,7 +351,7 @@
             "ExportToNewSyntax"});
             this.checkedListBox.Location = new System.Drawing.Point(274, 517);
             this.checkedListBox.Name = "checkedListBox";
-            this.checkedListBox.Size = new System.Drawing.Size(201, 54);
+            this.checkedListBox.Size = new System.Drawing.Size(156, 54);
             this.checkedListBox.Sorted = true;
             this.checkedListBox.TabIndex = 32;
             // 
@@ -372,20 +373,6 @@
             this.Date_ApplyDate_check.TabIndex = 34;
             this.Date_ApplyDate_check.Text = "Apply Date";
             this.Date_ApplyDate_check.UseVisualStyleBackColor = true;
-            // 
-            // txtOutput
-            // 
-            this.txtOutput.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.txtOutput.CausesValidation = false;
-            this.txtOutput.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOutput.ForeColor = System.Drawing.Color.White;
-            this.txtOutput.Location = new System.Drawing.Point(733, 15);
-            this.txtOutput.Multiline = true;
-            this.txtOutput.Name = "txtOutput";
-            this.txtOutput.ReadOnly = true;
-            this.txtOutput.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtOutput.Size = new System.Drawing.Size(900, 571);
-            this.txtOutput.TabIndex = 35;
             // 
             // ObjectType_label
             // 
@@ -414,6 +401,20 @@
             this.ObjType_listBox.Size = new System.Drawing.Size(168, 108);
             this.ObjType_listBox.TabIndex = 37;
             // 
+            // ShowOutput_button
+            // 
+            this.ShowOutput_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShowOutput_button.BackColor = System.Drawing.SystemColors.Window;
+            this.ShowOutput_button.Enabled = false;
+            this.ShowOutput_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShowOutput_button.Location = new System.Drawing.Point(466, 549);
+            this.ShowOutput_button.Name = "ShowOutput_button";
+            this.ShowOutput_button.Size = new System.Drawing.Size(57, 37);
+            this.ShowOutput_button.TabIndex = 38;
+            this.ShowOutput_button.Text = "Show Output";
+            this.ShowOutput_button.UseVisualStyleBackColor = false;
+            this.ShowOutput_button.Click += new System.EventHandler(this.ShowOutput_button_Click);
+            // 
             // ExportToNewSyntax
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -421,10 +422,10 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.HighlightText;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1638, 598);
+            this.ClientSize = new System.Drawing.Size(721, 598);
+            this.Controls.Add(this.ShowOutput_button);
             this.Controls.Add(this.ObjType_listBox);
             this.Controls.Add(this.ObjectType_label);
-            this.Controls.Add(this.txtOutput);
             this.Controls.Add(this.Date_ApplyDate_check);
             this.Controls.Add(this.Date_dateTimePicker);
             this.Controls.Add(this.checkedListBox);
@@ -506,9 +507,9 @@
         private System.Windows.Forms.CheckedListBox checkedListBox;
         private System.Windows.Forms.DateTimePicker Date_dateTimePicker;
         private System.Windows.Forms.CheckBox Date_ApplyDate_check;
-        private System.Windows.Forms.TextBox txtOutput;
         private System.Windows.Forms.Label ObjectType_label;
         private System.Windows.Forms.ListBox ObjType_listBox;
+        private System.Windows.Forms.Button ShowOutput_button;
     }
 }
 

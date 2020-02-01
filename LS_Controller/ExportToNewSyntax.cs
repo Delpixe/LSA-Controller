@@ -1,14 +1,14 @@
 using System;
 using System.Windows.Forms;
 using System.Management.Automation;
-using System.Management.Automation.Runspaces;
-using System.Collections.ObjectModel;
 using System.Text;
 
 namespace LS_Controller
 {
     public partial class ExportToNewSyntax : Form
     {
+        public ShowOutput Output { get; set; }
+
         public ExportToNewSyntax()
         {
             InitializeComponent();
@@ -18,12 +18,15 @@ namespace LS_Controller
             {
                 checkedListBox.SetItemChecked(i, true);
             }
+
+            Output = new ShowOutput(); //inizializzo output
         }
 
         private void Launch_Click(object sender, EventArgs e)
         {
-            txtOutput.Clear();
-            txtOutput.Text = RunScript(this);
+            Output.txtOutput.Clear();
+            Output.txtOutput.Text = RunScript(this);
+            this.ShowOutput_button.Enabled = true;
         }
 
         // Bring up a dialog to chose a folder path in which to open or save a file.
@@ -219,5 +222,11 @@ namespace LS_Controller
 
             return lfilterToApply;
         }
+
+        private void ShowOutput_button_Click(object sender, EventArgs e)
+        {
+            Output.Show();
+        }
+
     }
 }
