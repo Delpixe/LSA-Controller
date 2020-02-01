@@ -21,9 +21,9 @@ param (
 
 # *** BEGIN MAIN
 #Clear-Host
-Write-Output '_____________________________________________'
-Write-Output '            INIZIO ExportToNewSyntax'
-Write-Output '_____________________________________________'
+Write-Host '_____________________________________________'
+Write-Host '            INIZIO ExportToNewSyntax'
+Write-Host '_____________________________________________'
 
 Import-Module '.\LS_Library.ps1' -Force
 
@@ -40,12 +40,12 @@ $New_nav_service_path = """$nav_service_path\"""
 #BC paths
 $new_BC_server_path = """$BC_server_path"""
 $new_AL_path = """$AL_path"""
-Write-Output "BC_path -> $new_BC_server_path"
-Write-Output "AL_path -> $new_AL_path"
+Write-Host "BC_path -> $new_BC_server_path"
+Write-Host "AL_path -> $new_AL_path"
 
 $objectTypeList = @("Codeunit")#"Table", "Codeunit", "Page", "Report", "XMLport", "Query", "MenuSuite")
 foreach ($objectType in $objectTypeList) {
-    Write-Output $objectType
+    Write-Host $objectType
     # creo le sotto directory
     # //todo New-Item -ItemType Directory -Force -Path "$DestinationPath\$objectType\"
 
@@ -63,23 +63,23 @@ foreach ($objectType in $objectTypeList) {
     $filename = """$SourcePath\all_$objectType.txt"""
     $new_DataBaseName = """$DataBaseName"""
     $new_ServerName = """$ServerName"""
-    #Write-Output  "$nav_server_path $filename $new_DataBaseName $new_ServerName"
+    #Write-Host  "$nav_server_path $filename $new_DataBaseName $new_ServerName"
 
     $ExportCmd = "$nav_server_path Command=ExportToNewSyntax, File=$filename, Database=$new_DataBaseName, ServerName=$new_ServerName $New_FilterToApply"
     #$ExportCmd = "'/k ""$nav_server_path"""
     #$ExportCmd = "'/k ""$ExportCmd"""
     $ExportCmd = "'/c ""$ExportCmd"""
-    Write-Output '___________s_ExportCmd______________'
-    Write-Output  "ExportCmd -> $ExportCmd"
+    Write-Host '___________s_ExportCmd______________'
+    Write-Host  "ExportCmd -> $ExportCmd"
     
     ##################################################################################################################
     Start-Process 'cmd' -ArgumentList "$ExportCmd" -Wait
     ##################################################################################################################
-    Write-Output '___________e_ExportCmd______________'
+    Write-Host '___________e_ExportCmd______________'
  
 }
 
-Write-Output '_____________________________________________'
-Write-Output '            FINITO ExportToNewSyntax'
-Write-Output '_____________________________________________'
+Write-Host '_____________________________________________'
+Write-Host '            FINITO ExportToNewSyntax'
+Write-Host '_____________________________________________'
 

@@ -12,9 +12,9 @@ param (
 )
 # *** BEGIN MAIN
 #Clear-Host
-Write-Output '____________________________________________'
-Write-Output '           INIZIO SPLIT AND RENAME          '
-Write-Output '____________________________________________'
+Write-Host '____________________________________________'
+Write-Host '           INIZIO SPLIT AND RENAME          '
+Write-Host '____________________________________________'
 
 # gestisco la directory di export e le relative sottodirectory
 $nav_service_path += "\"
@@ -99,7 +99,7 @@ foreach ($obj_file_name in $obj_splitted) {
     Rename-Item -LiteralPath $obj_file_name -NewName $obj_name".txt"
 }
 
-Write-Output '____________________________________________'
-Write-Output '            FINE SPLIT AND RENAME           '
-Write-Output '____________________________________________'
+Write-Host '____________________________________________'
+Write-Host '            FINE SPLIT AND RENAME           '
+Write-Host '____________________________________________'
 

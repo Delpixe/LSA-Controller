@@ -41,7 +41,7 @@ function Import-NAVAdminTool
         Write-Verbose -Message 'NAV admin tool already imported'
     }
     # verifica comandi 
-    #Write-Output (Get-Command -Module Microsoft.Dynamics.Nav.Management, Microsoft.Dynamics.Nav.Apps.Management)
+    #Write-Host (Get-Command -Module Microsoft.Dynamics.Nav.Management, Microsoft.Dynamics.Nav.Apps.Management)
 }
 
 function Import-NAVModelTool
@@ -84,8 +84,8 @@ function Import-NavLib {
         [string]$nav_service_path
     )
     $nav_client_path = $nav_service_path
-    Write-Output 'nav_client_path = ' $nav_client_path
-    Write-Output 'nav_service_path = ' $nav_service_path
+    Write-Host 'nav_client_path = ' $nav_client_path
+    Write-Host 'nav_service_path = ' $nav_service_path
 
     $result = Import-NAVAdminTool -Force -modulePath $nav_service_path"NavAdminTool.ps1"
     IF ($result){
@@ -123,7 +123,7 @@ function BuildFilter {
 
     $New_FilterToApply += """"
 
-    Write-Output "filtro = $New_FilterToApply"
+    Write-Host "filtro = $New_FilterToApply"
     #WriteLog -LogFileName $LogFileName -StringaDaScrivere "filtro = $New_FilterToApply"
     return $New_FilterToApply
 }
@@ -142,7 +142,7 @@ function CreateLogFile {
         New-Item -ItemType "file" -Force -Path $LogFileName 
     }
 
-    Write-Output "Creato file di Log $LogFileName"
+    Write-Host "Creato file di Log $LogFileName"
     WriteLog -LogFileName $LogFileName -StringaDaScrivere "Creato file di Log $LogFileName"
 
     return $LogFileName

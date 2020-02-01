@@ -8,6 +8,7 @@ namespace LS_Controller
     public partial class ExportToNewSyntax : Form
     {
         public ShowOutput Output { get; set; }
+        private string OutputStr { get; set; }
 
         public ExportToNewSyntax()
         {
@@ -24,8 +25,7 @@ namespace LS_Controller
 
         private void Launch_Click(object sender, EventArgs e)
         {
-            Output.txtOutput.Clear();
-            Output.txtOutput.Text = RunScript(this);
+            OutputStr = RunScript(this);
             this.ShowOutput_button.Enabled = true;
         }
 
@@ -228,8 +228,10 @@ namespace LS_Controller
 
         private void ShowOutput_button_Click(object sender, EventArgs e)
         {
+            Output = new ShowOutput(); //inizializzo output
+            Output.txtOutput.Clear();
+            Output.txtOutput.Text = OutputStr;
             Output.Show();
         }
-
     }
 }

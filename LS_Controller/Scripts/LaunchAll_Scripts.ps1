@@ -57,9 +57,9 @@ param (
 )
 
 Clear-Host #pulisce la schermata di powershell
-Write-Output '_____________________________________________'
-Write-Output '            INIZIO LaunchAll'
-Write-Output '_____________________________________________'
+Write-Host '_____________________________________________'
+Write-Host '            INIZIO LaunchAll'
+Write-Host '_____________________________________________'
 
 if ($OtherScriptsPath -eq $null){
     $OtherScriptsPath = ".\"
@@ -86,11 +86,16 @@ $new_NAV_service_path = """$NAV_service_path\"""
 $new_BC_server_path = """$BC_server_path"""
 #cambiato modo $new_AL_path = """$AL_path"""
 
-Write-Output "BC_path -> $new_BC_server_path"
-Write-Output "AL_path -> $new_AL_path"
-Write-Output "NAV_server_path -> $NAV_server_path"
-Write-Output "NAV_DataBaseName -> $new_NAV_DataBaseName"
-Write-Output "NAV_serverName -> $new_NAV_serverName"
+if ($extensionStartId -ne ''){
+    $extensionStartId = "-extensionStartId $extensionStartId"
+    Write-Host "$extensionStartId"
+}
+
+Write-Host "BC_path -> $new_BC_server_path"
+Write-Host "AL_path -> $new_AL_path"
+Write-Host "NAV_server_path -> $NAV_server_path"
+Write-Host "NAV_DataBaseName -> $new_NAV_DataBaseName"
+Write-Host "NAV_serverName -> $new_NAV_serverName"
 WriteLog -LogFileName $LogFileName -StringaDaScrivere  "BC_path -> $new_BC_server_path"#log
 WriteLog -LogFileName $LogFileName -StringaDaScrivere  "AL_path -> $new_AL_path"#log
 WriteLog -LogFileName $LogFileName -StringaDaScrivere  "NAV_server_path -> $NAV_server_path"#log
@@ -115,10 +120,10 @@ foreach ($objectType in $objectTypeList) {
         $ExportCmd = "'/c ""$ExportCmd"""
         WriteLog -LogFileName $LogFileName -StringaDaScrivere  "ExportCmd -> $ExportCmd" #log
 
-        Write-Output '___________s_ExportCmd______________'
+        Write-Host '___________s_ExportCmd______________'
         Write-Output  "ExportCmd -> $ExportCmd"
         Start-Process 'cmd' -ArgumentList "$ExportCmd" -Wait
-        Write-Output '___________e_ExportCmd______________'
+        Write-Host '___________e_ExportCmd______________'
     }
 
     if (($LaunchType -eq "All") -or ($LaunchType -eq "Split")) {
@@ -132,10 +137,10 @@ foreach ($objectType in $objectTypeList) {
         $splitAndRenamePath = """$OtherScriptsPath\split_and_rename.ps1"""
         $LaunchSplit = "& $splitAndRenamePath -SourcePath $new_sourcePath -DestinationPath $new_DestinationPath -NAV_service_path $new_NAV_service_path -Pobj_name $obj_name"
         WriteLog -LogFileName $LogFileName -StringaDaScrivere  "LaunchSplit -> $LaunchSplit" #log
-        Write-Output '___________s_LaunchSplit____________'
+        Write-Host '___________s_LaunchSplit____________'
         Write-Output  "LaunchSplit -> $LaunchSplit"
         Invoke-Expression $LaunchSplit
-        Write-Output '___________e_LaunchSplit____________'
+        Write-Host '___________e_LaunchSplit____________'
     }
 
     $new_DestinationPath = """$DestinationPath\$objectType"""
@@ -149,12 +154,12 @@ foreach ($objectType in $objectTypeList) {
         }
 
         $TextToAlPath = """$OtherScriptsPath\TextToAl.ps1"""
-        $LaunchConversion = "& $TextToAlPath -BC_server_path $new_BC_server_path -TxtPath $new_DestinationPath -ALPath $new_AL_path --extensionStartId $extensionStartId"
+        $LaunchConversion = "& $TextToAlPath -BC_server_path $new_BC_server_path -TxtPath $new_DestinationPath -ALPath $new_AL_path $extensionStartId"
         WriteLog -LogFileName $LogFileName -StringaDaScrivere  "LaunchConversion -> $LaunchConversion" #log
-        Write-Output '_________s_LaunchConversion_________'
+        Write-Host '_________s_LaunchConversion_________'
         Write-Output  "LaunchConversion -> $LaunchConversion"
         Invoke-Expression $LaunchConversion
-        Write-Output '_________e_LaunchConversion_________'
+        Write-Host '_________e_LaunchConversion_________'
     }
     
 }
@@ -173,7 +178,7 @@ if ($DeleteAllTxt) { #se mette deleteAllTxt cancella tutte le cartelle dove fini
     Write-Host -verbose '___________e_DeleteAllTxt____________'
 }
 
-Write-Output '_____________________________________________'
-Write-Output '            FINITO LaunchAll'
-Write-Output '_____________________________________________'
+Write-Host '_____________________________________________'
+Write-Host '            FINITO LaunchAll'
+Write-Host '_____________________________________________'
 
