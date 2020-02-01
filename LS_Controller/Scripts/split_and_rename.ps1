@@ -11,10 +11,10 @@ param (
 #>
 )
 # *** BEGIN MAIN
-Clear-Host
-Write-Host '____________________________________________'
-Write-Host '           INIZIO SPLIT AND RENAME          '
-Write-Host '____________________________________________'
+#Clear-Host
+Write-Output '____________________________________________'
+Write-Output '           INIZIO SPLIT AND RENAME          '
+Write-Output '____________________________________________'
 
 # gestisco la directory di export e le relative sottodirectory
 $nav_service_path += "\"
@@ -31,7 +31,7 @@ if (!(Test-Path $SourcePath)) {
 
 if (!(Test-Path $DestinationPath)) {
     New-Item -ItemType Directory -Force -Path $DestinationPath
-    Write-Host -verbose "creata dir "+$DestinationPath+"`r`n" 
+    Write-Output -verbose "creata dir "+$DestinationPath+"`r`n" 
 }
 
 if ($Pobj_name -eq ''){
@@ -46,13 +46,13 @@ if (Test-Path $DestinationPath) {
 
 Import-Module '.\LS_Library.ps1' -Force
 
-Write-Verbose -verbose "nav_service_path = $nav_service_path"
-Write-Verbose -verbose "SourcePath = $SourcePath"
-Write-Verbose -verbose "DestinationPath = $DestinationPath"
+Write-Output  "nav_service_path = $nav_service_path"
+Write-Output  "SourcePath = $SourcePath"
+Write-Output  "DestinationPath = $DestinationPath"
 
 #Gestione Librerie
 Import-NavLib($nav_service_path)
-Write-Verbose -verbose 'Importata la libreria'
+Write-Output  'Importata la libreria'
 
 #Splitto il file
 #$obj_splited = Split-NAVApplicationObjectFile -Source "$SourcePath\*.txt" -Destination "$DestinationPath\" -Force -PreserveFormatting -PassThru
@@ -95,11 +95,11 @@ foreach ($obj_file_name in $obj_splited) {
     $obj_name = $obj_name.Insert($position,'.')
     
 
-    Write-Host "'$obj_file_name' --> '$obj_file' rename to '$obj_name'.txt"
+    Write-Output "'$obj_file_name' --> '$obj_file' rename to '$obj_name'.txt"
     Rename-Item -LiteralPath $obj_file_name -NewName $obj_name".txt"
 }
 
-Write-Host '____________________________________________'
-Write-Host '            FINE SPLIT AND RENAME           '
-Write-Host '____________________________________________'
+Write-Output '____________________________________________'
+Write-Output '            FINE SPLIT AND RENAME           '
+Write-Output '____________________________________________'
 

@@ -10,38 +10,38 @@ function Import-NAVAdminTool
     )
     $moduleManagement = Get-Module -Name 'Microsoft.Dynamics.Nav.Management'
     $moduleApp = Get-Module -Name 'Microsoft.Dynamics.Apps.Management'
-    Write-Verbose -Message 'module Management name: ($moduleManagement.Name)'
-    Write-Verbose -Message 'module App name: ($moduleApp.Name)'
-    Write-Verbose -Message 'valore controllo : $($Force -And ($moduleManagement -Or $moduleApp) )'
+    Write-Output  'module Management name: ($moduleManagement.Name)'
+    Write-Output  'module App name: ($moduleApp.Name)'
+    Write-Output  'valore controllo : $($Force -And ($moduleManagement -Or $moduleApp) )'
     if ($Force -And $moduleManagement ) 
     {
-        Write-Host -Object "Removing module $($moduleManagement.Path)"
+        Write-Output "Removing module $($moduleManagement.Path)"
         Remove-Module -Name $moduleManagement.Name -Force
     }
     if ($Force -And $moduleApp ) 
     {
-        Write-Host -Object "Removing module $($moduleApp.Path)"
+        Write-Output "Removing module $($moduleApp.Path)"
         Remove-Module -Name $moduleApp.Name -Force
     }
     if (!($moduleApp) -Or !($moduleManagement) -or ($moduleManagement.Path -ne $modulepath) -or ($Force)) 
     {
         if (!(Test-Path -Path $modulepath)) 
         {
-            Write-Host -Object "Module $moduelpath not found!"
+            Write-Output "Module $moduelpath not found!"
             return
         }
-        Write-Host -Object "Importing NAVAdminTool from $modulepath"
+        Write-Output "Importing NAVAdminTool from $modulepath"
         #Import-Module "$modulepath" -DisableNameChecking -Force -Global #-Scope_local
         $cmd = "& Import-Module """+$modulepath+""" -DisableNameChecking -Force -Global"
         Invoke-Expression $cmd
         #& $modulepath #| Out-Null
-        Write-Verbose -Message 'NAV admin tool imported'
+        Write-Output  'NAV admin tool imported'
     } else 
     {
-        Write-Verbose -Message 'NAV admin tool already imported'
+        Write-Output  'NAV admin tool already imported'
     }
     # verifica comandi 
-    #Write-Host (Get-Command -Module Microsoft.Dynamics.Nav.Management, Microsoft.Dynamics.Nav.Apps.Management)
+    #Write-Output (Get-Command -Module Microsoft.Dynamics.Nav.Management, Microsoft.Dynamics.Nav.Apps.Management)
 }
 
 function Import-NAVModelTool
@@ -60,21 +60,21 @@ function Import-NAVModelTool
             return
         }
         if ($Global) {
-            Write-Host -Object "Importing Globally NAVModelTool from $modulepath"
+            Write-Output "Importing Globally NAVModelTool from $modulepath"
             #Import-Module "$modulepath" -DisableNameChecking -Force -Scope Global #-WarningAction SilentlyContinue | Out-Null
             $cmd = "& Import-Module """+$modulepath+""" -DisableNameChecking -Force -Scope Global"
             Invoke-Expression $cmd
-            Write-Verbose -Message 'NAV model tool imported'
+            Write-Output  'NAV model tool imported'
         } else {
-            Write-Host -Object "Importing NAVModelTool from $modulepath"
+            Write-Output "Importing NAVModelTool from $modulepath"
             #Import-Module "$modulepath" -DisableNameChecking -Force -Scope Local #-WarningAction SilentlyContinue | Out-Null
             $cmd = "& Import-Module """+$modulepath+""" -DisableNameChecking -Force -Scope Local"
             Invoke-Expression $cmd
-            Write-Verbose -Message 'NAV model tool imported'
+            Write-Output  'NAV model tool imported'
         }
     } else 
     {
-        Write-Verbose -Message 'NAV model tool already imported'
+        Write-Output  'NAV model tool already imported'
     }
 }
 
@@ -84,8 +84,8 @@ function Import-NavLib {
         [string]$nav_service_path
     )
     $nav_client_path = $nav_service_path
-    Write-Host 'nav_client_path = ' $nav_client_path
-    Write-Host 'nav_service_path = ' $nav_service_path
+    Write-Output 'nav_client_path = ' $nav_client_path
+    Write-Output 'nav_service_path = ' $nav_service_path
 
     $result = Import-NAVAdminTool -Force -modulePath $nav_service_path"NavAdminTool.ps1"
     IF ($result){
@@ -123,7 +123,7 @@ function BuildFilter {
 
     $New_FilterToApply += """"
 
-    Write-Host "filtro = $New_FilterToApply"
+    Write-Output "filtro = $New_FilterToApply"
     #WriteLog -LogFileName $LogFileName -StringaDaScrivere "filtro = $New_FilterToApply"
     return $New_FilterToApply
 }
@@ -142,7 +142,7 @@ function CreateLogFile {
         New-Item -ItemType "file" -Force -Path $LogFileName 
     }
 
-    Write-Host "Creato file di Log $LogFileName"
+    Write-Output "Creato file di Log $LogFileName"
     WriteLog -LogFileName $LogFileName -StringaDaScrivere "Creato file di Log $LogFileName"
 
     return $LogFileName

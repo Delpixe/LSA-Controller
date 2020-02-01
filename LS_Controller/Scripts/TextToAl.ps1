@@ -10,30 +10,30 @@ param (
 )
 
 # *** BEGIN MAIN
-Clear-Host
-Write-Host '_____________________________________________'
-Write-Host '            INIZIO txt2al'
-Write-Host '_____________________________________________'
+#Clear-Host
+Write-Output '_____________________________________________'
+Write-Output '            INIZIO txt2al'
+Write-Output '_____________________________________________'
 
 $BC_server_path = """$BC_server_path\txt2al.exe"""
-Write-Host "$nav_server_path"
+Write-Output "$nav_server_path"
 
 $TxtPath = "--source=""$TxtPath"""
-Write-Host "$TxtPath"
+Write-Output "$TxtPath"
 
 $ALPath = "--target=""$ALPath"""
-Write-Host "$ALPath"
+Write-Output "$ALPath"
 
 $TxtToAL = """$BC_server_path $TxtPath $ALPath ."""
 $TxtToAL = "'/c $TxtToAL"
-Write-Verbose -verbose "txt2al -> $TxtToAL"
+Write-Output  "txt2al -> $TxtToAL"
 ##################################################################################################################
 Start-Process 'cmd' -ArgumentList "$TxtToAL" -Wait
 ##################################################################################################################
 
-Write-Host '_____________________________________________'
-Write-Host '            FINITO txt2al'
-Write-Host '_____________________________________________'
+Write-Output '_____________________________________________'
+Write-Output '            FINITO txt2al'
+Write-Output '_____________________________________________'
 
 #"C:\Program Files (x86)\Microsoft Dynamics 365 Business Central\140\RoleTailored Client\txt2al.exe" --source=C:\Users\m.delpapa\Desktop\MARK\2019 12 30\MARK_DELTA\MARK\ --target=C:\Users\m.delpapa\Desktop\MARK\2019 12 30\MARK_DELTA\MARK_AL\.
 <#

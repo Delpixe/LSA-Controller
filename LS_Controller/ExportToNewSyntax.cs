@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
@@ -84,7 +84,7 @@ namespace LS_Controller
                     lobjectTypeList = "",
                     lfilter = "";
             
-            StringBuilder stringBuilder = new StringBuilder();
+            StringBuilder lsb = new StringBuilder();
             lscript += GetScriptToRun(sender);
             
             foreach (var ObjType in sender.ObjType_listBox.SelectedItems)
@@ -112,15 +112,15 @@ namespace LS_Controller
                     {
                         case "ExportToNewSyntax":
                             lLaunchType = " -LaunchType ExportToNewSyntax ";
-                            RunPowerShellCommand(lscript + lLaunchType, stringBuilder);//lancio powershell
+                            RunPowerShellCommand(lscript + lLaunchType, lsb);//lancio powershell
                             break;
                         case "Converti in AL":
                             lLaunchType = " -LaunchType TxtToAL ";
-                            RunPowerShellCommand(lscript + lLaunchType, stringBuilder);//lancio powershell
+                            RunPowerShellCommand(lscript + lLaunchType, lsb);//lancio powershell
                             break;
                         case "Dividi per tipo":
                             lLaunchType = " -LaunchType Split ";
-                            RunPowerShellCommand(lscript + lLaunchType, stringBuilder);//lancio powershell
+                            RunPowerShellCommand(lscript + lLaunchType, lsb);//lancio powershell
                             break;
                     }
                 }
@@ -128,16 +128,17 @@ namespace LS_Controller
             else
             {
                 lLaunchType = " -LaunchType All ";
-                RunPowerShellCommand(lscript + lLaunchType, stringBuilder);//lancio powershell
+                RunPowerShellCommand(lscript + lLaunchType, lsb);//lancio powershell
             }
-            return stringBuilder.ToString();
+            return lsb.ToString();
         }
 
-        private void RunPowerShellCommand(string pscript, StringBuilder pstringBuilder)
+        private void RunPowerShellCommand(string pscript, StringBuilder psb)
         {
-            //pstringBuilder.AppendLine(pscript);//per test
+            //psb.AppendLine(pscript);//per test
             //return;//per test
-            try { 
+            /*
+             * try { 
                 if (pscript != null)
                 {
                     Runspace runspace = RunspaceFactory.CreateRunspace();
@@ -148,20 +149,34 @@ namespace LS_Controller
                     Collection<PSObject> results = pipeline.Invoke();
                     runspace.Close();
                     foreach (PSObject pSObject in results)
-                        pstringBuilder.AppendLine(pSObject.ToString());
+                    {
+                        psb.AppendLine(pSObject.ToString());
                 }
             }catch(Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-                pstringBuilder.AppendLine(pscript);
+                psb.AppendLine(pscript);
+            }
+            */
+            PowerShell powerShell = PowerShell.Create();
+            powerShell.AddScript(pscript);
+            powerShell.AddScript("Out-String");
+            var results = powerShell.Invoke();
+
+            foreach (var result in results)
+            {
+                psb.AppendLine(result.ToString());
+            }
+
+            if (powerShell.Streams.Error.Count > 0)
+            {
+                psb.AppendLine(powerShell.Streams.Error.Count + " errors");
             }
         }
 
         private string GetScriptToRun(ExportToNewSyntax sender)
         {
-            string  lfilter = "";
-
-            lfilter = GetFiltersToApply(sender); //prendo i filtri
+            string  lfilter = GetFiltersToApply(sender); //prendo i filtri
             return lfilter;
         }
 
