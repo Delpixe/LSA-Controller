@@ -163,7 +163,7 @@ namespace LS_Controller
             */
             PowerShell powerShell = PowerShell.Create();
             powerShell.AddScript(pscript);
-            powerShell.AddScript("Out-String");
+            powerShell.AddCommand("Out-String");
             var results = powerShell.Invoke();
 
             foreach (var result in results)

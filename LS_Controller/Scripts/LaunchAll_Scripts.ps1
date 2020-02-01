@@ -160,7 +160,7 @@ foreach ($objectType in $objectTypeList) {
 #! non provato !#
 if ($DeleteAllTxt) { #se mette deleteAllTxt cancella tutte le cartelle dove finiscono i Txt 
     WriteLog -LogFileName $LogFileName -StringaDaScrivere  "DeleteAllTxt -> $DeleteAllTxt" #log
-    Write-Output -verbose '___________s_DeleteAllTxt____________'
+    Write-Output  '___________s_DeleteAllTxt____________'
     
     Remove-Item $new_DestinationPath -Recurse -Force -Confirm:$false
     Remove-Item $new_sourcePath -Recurse -Force -Confirm:$false
@@ -168,7 +168,7 @@ if ($DeleteAllTxt) { #se mette deleteAllTxt cancella tutte le cartelle dove fini
     Remove-Item -Path "$filename" -Force
     Remove-Item -Path "$new_DestinationPath" -Force
     #>
-    Write-Output -verbose '___________e_DeleteAllTxt____________'
+    Write-Output  '___________e_DeleteAllTxt____________'
 }
 
 Write-Output '_____________________________________________'

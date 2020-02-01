@@ -76,7 +76,7 @@
             this.Launch.Location = new System.Drawing.Point(554, 549);
             this.Launch.Name = "Launch";
             this.Launch.Size = new System.Drawing.Size(158, 37);
-            this.Launch.TabIndex = 0;
+            this.Launch.TabIndex = 20;
             this.Launch.Text = "Lancia";
             this.Launch.UseVisualStyleBackColor = false;
             this.Launch.Click += new System.EventHandler(this.Launch_Click);
@@ -157,7 +157,7 @@
             this.SingleFile_button.Location = new System.Drawing.Point(649, 116);
             this.SingleFile_button.Name = "SingleFile_button";
             this.SingleFile_button.Size = new System.Drawing.Size(63, 21);
-            this.SingleFile_button.TabIndex = 14;
+            this.SingleFile_button.TabIndex = 6;
             this.SingleFile_button.Text = "Scegli";
             this.SingleFile_button.UseVisualStyleBackColor = true;
             this.SingleFile_button.Click += new System.EventHandler(this.SingleFile_button_Click);
@@ -167,7 +167,7 @@
             this.SingleFile_Text.Location = new System.Drawing.Point(180, 119);
             this.SingleFile_Text.Name = "SingleFile_Text";
             this.SingleFile_Text.Size = new System.Drawing.Size(461, 20);
-            this.SingleFile_Text.TabIndex = 13;
+            this.SingleFile_Text.TabIndex = 5;
             // 
             // SingleFile_Label
             // 
@@ -184,7 +184,7 @@
             this.BC_Server_Path_button.Location = new System.Drawing.Point(649, 439);
             this.BC_Server_Path_button.Name = "BC_Server_Path_button";
             this.BC_Server_Path_button.Size = new System.Drawing.Size(63, 21);
-            this.BC_Server_Path_button.TabIndex = 17;
+            this.BC_Server_Path_button.TabIndex = 15;
             this.BC_Server_Path_button.Text = "Scegli";
             this.BC_Server_Path_button.UseVisualStyleBackColor = true;
             this.BC_Server_Path_button.Click += new System.EventHandler(this.BC_Serve_Path_button_Click);
@@ -194,7 +194,7 @@
             this.BC_Server_Path_text.Location = new System.Drawing.Point(180, 438);
             this.BC_Server_Path_text.Name = "BC_Server_Path_text";
             this.BC_Server_Path_text.Size = new System.Drawing.Size(461, 20);
-            this.BC_Server_Path_text.TabIndex = 16;
+            this.BC_Server_Path_text.TabIndex = 14;
             // 
             // BC_Server_Path_label
             // 
@@ -211,7 +211,7 @@
             this.AL_Path_button.Location = new System.Drawing.Point(649, 466);
             this.AL_Path_button.Name = "AL_Path_button";
             this.AL_Path_button.Size = new System.Drawing.Size(63, 21);
-            this.AL_Path_button.TabIndex = 20;
+            this.AL_Path_button.TabIndex = 17;
             this.AL_Path_button.Text = "Scegli";
             this.AL_Path_button.UseVisualStyleBackColor = true;
             this.AL_Path_button.Click += new System.EventHandler(this.AL_Path_button_Click);
@@ -221,7 +221,7 @@
             this.AL_Path_text.Location = new System.Drawing.Point(180, 465);
             this.AL_Path_text.Name = "AL_Path_text";
             this.AL_Path_text.Size = new System.Drawing.Size(461, 20);
-            this.AL_Path_text.TabIndex = 19;
+            this.AL_Path_text.TabIndex = 16;
             // 
             // AL_Path_label
             // 
@@ -238,7 +238,7 @@
             this.Splitted_button.Location = new System.Drawing.Point(649, 143);
             this.Splitted_button.Name = "Splitted_button";
             this.Splitted_button.Size = new System.Drawing.Size(63, 21);
-            this.Splitted_button.TabIndex = 23;
+            this.Splitted_button.TabIndex = 8;
             this.Splitted_button.Text = "Scegli";
             this.Splitted_button.UseVisualStyleBackColor = true;
             this.Splitted_button.Click += new System.EventHandler(this.Splitted_button_Click);
@@ -248,7 +248,7 @@
             this.Splitted_text.Location = new System.Drawing.Point(180, 146);
             this.Splitted_text.Name = "Splitted_text";
             this.Splitted_text.Size = new System.Drawing.Size(461, 20);
-            this.Splitted_text.TabIndex = 22;
+            this.Splitted_text.TabIndex = 7;
             // 
             // Splitted_label
             // 
@@ -267,7 +267,7 @@
             this.DeleteAllTxtFiles.Location = new System.Drawing.Point(20, 534);
             this.DeleteAllTxtFiles.Name = "DeleteAllTxtFiles";
             this.DeleteAllTxtFiles.Size = new System.Drawing.Size(163, 21);
-            this.DeleteAllTxtFiles.TabIndex = 24;
+            this.DeleteAllTxtFiles.TabIndex = 18;
             this.DeleteAllTxtFiles.Text = "Delete All Txt Files";
             this.DeleteAllTxtFiles.UseVisualStyleBackColor = true;
             // 
@@ -276,7 +276,7 @@
             this.LockedBy_text.Location = new System.Drawing.Point(180, 226);
             this.LockedBy_text.Name = "LockedBy_text";
             this.LockedBy_text.Size = new System.Drawing.Size(461, 20);
-            this.LockedBy_text.TabIndex = 26;
+            this.LockedBy_text.TabIndex = 11;
             // 
             // LockedBy_label
             // 
@@ -313,7 +313,7 @@
             this.VersionList_text.Location = new System.Drawing.Point(180, 252);
             this.VersionList_text.Name = "VersionList_text";
             this.VersionList_text.Size = new System.Drawing.Size(461, 20);
-            this.VersionList_text.TabIndex = 31;
+            this.VersionList_text.TabIndex = 12;
             // 
             // VersionList_label
             // 
@@ -330,14 +330,14 @@
             this.NAV_ServerName_Text.Location = new System.Drawing.Point(180, 42);
             this.NAV_ServerName_Text.Name = "NAV_ServerName_Text";
             this.NAV_ServerName_Text.Size = new System.Drawing.Size(461, 20);
-            this.NAV_ServerName_Text.TabIndex = 6;
+            this.NAV_ServerName_Text.TabIndex = 1;
             // 
             // NAV_DataBaseName_Text
             // 
             this.NAV_DataBaseName_Text.Location = new System.Drawing.Point(180, 67);
             this.NAV_DataBaseName_Text.Name = "NAV_DataBaseName_Text";
             this.NAV_DataBaseName_Text.Size = new System.Drawing.Size(461, 20);
-            this.NAV_DataBaseName_Text.TabIndex = 9;
+            this.NAV_DataBaseName_Text.TabIndex = 2;
             // 
             // checkedListBox
             // 
@@ -353,14 +353,14 @@
             this.checkedListBox.Name = "checkedListBox";
             this.checkedListBox.Size = new System.Drawing.Size(156, 54);
             this.checkedListBox.Sorted = true;
-            this.checkedListBox.TabIndex = 32;
+            this.checkedListBox.TabIndex = 19;
             // 
             // Date_dateTimePicker
             // 
             this.Date_dateTimePicker.Location = new System.Drawing.Point(180, 200);
             this.Date_dateTimePicker.Name = "Date_dateTimePicker";
             this.Date_dateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.Date_dateTimePicker.TabIndex = 33;
+            this.Date_dateTimePicker.TabIndex = 9;
             this.Date_dateTimePicker.ValueChanged += new System.EventHandler(this.Date_dateTimePicker_ValueChanged);
             // 
             // Date_ApplyDate_check
@@ -370,7 +370,7 @@
             this.Date_ApplyDate_check.Location = new System.Drawing.Point(547, 200);
             this.Date_ApplyDate_check.Name = "Date_ApplyDate_check";
             this.Date_ApplyDate_check.Size = new System.Drawing.Size(94, 20);
-            this.Date_ApplyDate_check.TabIndex = 34;
+            this.Date_ApplyDate_check.TabIndex = 10;
             this.Date_ApplyDate_check.Text = "Apply Date";
             this.Date_ApplyDate_check.UseVisualStyleBackColor = true;
             // 
@@ -399,7 +399,7 @@
             this.ObjType_listBox.Name = "ObjType_listBox";
             this.ObjType_listBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.ObjType_listBox.Size = new System.Drawing.Size(168, 108);
-            this.ObjType_listBox.TabIndex = 37;
+            this.ObjType_listBox.TabIndex = 13;
             // 
             // ShowOutput_button
             // 
@@ -410,7 +410,7 @@
             this.ShowOutput_button.Location = new System.Drawing.Point(466, 549);
             this.ShowOutput_button.Name = "ShowOutput_button";
             this.ShowOutput_button.Size = new System.Drawing.Size(57, 37);
-            this.ShowOutput_button.TabIndex = 38;
+            this.ShowOutput_button.TabIndex = 21;
             this.ShowOutput_button.Text = "Show Output";
             this.ShowOutput_button.UseVisualStyleBackColor = false;
             this.ShowOutput_button.Click += new System.EventHandler(this.ShowOutput_button_Click);

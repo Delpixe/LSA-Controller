@@ -89,12 +89,12 @@ function Import-NavLib {
 
     $result = Import-NAVAdminTool -Force -modulePath $nav_service_path"NavAdminTool.ps1"
     IF ($result){
-        Write-Verbose "-----------> moduli nav importati con successo!!"
+        Write-Output  "-----------> moduli nav importati con successo!!"
         return $true
     } else {
         $result = Import-NAVModelTool -Global -modulePath $nav_client_path"NavModelTools.ps1"
         IF (!$result){
-            Write-Verbose "-----------> CLIENT e/o SERVIZIO NON TRONVATO!!"
+            Write-Output  "-----------> CLIENT e/o SERVIZIO NON TRONVATO!!"
             return $false
         }
     }

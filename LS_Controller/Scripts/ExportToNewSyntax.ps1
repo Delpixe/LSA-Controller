@@ -63,7 +63,7 @@ foreach ($objectType in $objectTypeList) {
     $filename = """$SourcePath\all_$objectType.txt"""
     $new_DataBaseName = """$DataBaseName"""
     $new_ServerName = """$ServerName"""
-    #Write-Output -Verbose "$nav_server_path $filename $new_DataBaseName $new_ServerName"
+    #Write-Output  "$nav_server_path $filename $new_DataBaseName $new_ServerName"
 
     $ExportCmd = "$nav_server_path Command=ExportToNewSyntax, File=$filename, Database=$new_DataBaseName, ServerName=$new_ServerName $New_FilterToApply"
     #$ExportCmd = "'/k ""$nav_server_path"""

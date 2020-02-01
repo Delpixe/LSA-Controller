@@ -83,9 +83,9 @@ function Import-NAVAdminTool
     )
     $moduleManagement = Get-Module -Name 'Microsoft.Dynamics.Nav.Management'
     $moduleApp = Get-Module -Name 'Microsoft.Dynamics.Apps.Management'
-    Write-Verbose -Message 'module Management name: ($moduleManagement.Name)'
-    Write-Verbose -Message 'module App name: ($moduleApp.Name)'
-    Write-Verbose -Message 'valore controllo : $($Force -And ($moduleManagement -Or $moduleApp) )'
+    Write-Output 'module Management name: ($moduleManagement.Name)'
+    Write-Output 'module App name: ($moduleApp.Name)'
+    Write-Output 'valore controllo : $($Force -And ($moduleManagement -Or $moduleApp) )'
     if ($Force -And $moduleManagement ) 
     {
         Write-Host -Object "Removing module $($moduleManagement.Path)"
@@ -108,10 +108,10 @@ function Import-NAVAdminTool
         $cmd = "& Import-Module """+$modulepath+""" -DisableNameChecking -Force -Global"
         Invoke-Expression $cmd
         #& $modulepath #| Out-Null
-        Write-Verbose -Message 'NAV admin tool imported'
+        Write-Output 'NAV admin tool imported'
     } else 
     {
-        Write-Verbose -Message 'NAV admin tool already imported'
+        Write-Output 'NAV admin tool already imported'
     }
     # verifica comandi 
     #Write-Host (Get-Command -Module Microsoft.Dynamics.Nav.Management, Microsoft.Dynamics.Nav.Apps.Management)
@@ -137,16 +137,16 @@ function Import-NAVModelTool
             #Import-Module "$modulepath" -DisableNameChecking -Force -Scope Global #-WarningAction SilentlyContinue | Out-Null
             $cmd = "& Import-Module "+$modulepath+" -DisableNameChecking -Force -Scope Global"
             Invoke-Expression $cmd
-            Write-Verbose -Message 'NAV model tool imported'
+            Write-Output 'NAV model tool imported'
         } else {
             Write-Host -Object "Importing NAVModelTool from $modulepath"
             #Import-Module "$modulepath" -DisableNameChecking -Force -Scope Local #-WarningAction SilentlyContinue | Out-Null
             $cmd = "& Import-Module "+$modulepath+" -DisableNameChecking -Force -Scope Local"
             Invoke-Expression $cmd
-            Write-Verbose -Message 'NAV model tool imported'
+            Write-Output 'NAV model tool imported'
         }
     } else 
     {
-        Write-Verbose -Message 'NAV model tool already imported'
+        Write-Output 'NAV model tool already imported'
     }
 }

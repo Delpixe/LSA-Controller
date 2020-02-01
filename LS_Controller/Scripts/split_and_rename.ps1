@@ -31,7 +31,7 @@ if (!(Test-Path $SourcePath)) {
 
 if (!(Test-Path $DestinationPath)) {
     New-Item -ItemType Directory -Force -Path $DestinationPath
-    Write-Output -verbose "creata dir "+$DestinationPath+"`r`n" 
+    Write-Output  "creata dir "+$DestinationPath+"`r`n" 
 }
 
 if ($Pobj_name -eq ''){
