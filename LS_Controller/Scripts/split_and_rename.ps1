@@ -31,7 +31,7 @@ if (!(Test-Path $SourcePath)) {
 
 if (!(Test-Path $DestinationPath)) {
     New-Item -ItemType Directory -Force -Path $DestinationPath
-    Write-Output  "creata dir "+$DestinationPath+"`r`n" 
+    Write-Host -verbose "creata dir "+$DestinationPath+"`r`n" 
 }
 
 if ($Pobj_name -eq ''){
@@ -46,21 +46,21 @@ if (Test-Path $DestinationPath) {
 
 Import-Module '.\LS_Library.ps1' -Force
 
-Write-Output  "nav_service_path = $nav_service_path"
-Write-Output  "SourcePath = $SourcePath"
-Write-Output  "DestinationPath = $DestinationPath"
+Write-Verbose -verbose "nav_service_path = $nav_service_path"
+Write-Verbose -verbose "SourcePath = $SourcePath"
+Write-Verbose -verbose "DestinationPath = $DestinationPath"
 
 #Gestione Librerie
 Import-NavLib($nav_service_path)
-Write-Output  'Importata la libreria'
+Write-Verbose -verbose 'Importata la libreria'
 
 #Splitto il file
-#$obj_splited = Split-NAVApplicationObjectFile -Source "$SourcePath\*.txt" -Destination "$DestinationPath\" -Force -PreserveFormatting -PassThru
-#$obj_splited = Split-NAVApplicationObjectFile -Source "$SourcePath\*.txt" -Destination "$DestinationPath\" -Force -PreserveFormatting -PassThru
-$obj_splited = Split-NAVApplicationObjectFile -Source "$SourcePath\$Pobj_name.txt" -Destination "$DestinationPath\" -Force -PreserveFormatting -PassThru
+#$obj_splitted = Split-NAVApplicationObjectFile -Source "$SourcePath\*.txt" -Destination "$DestinationPath\" -Force -PreserveFormatting -PassThru
+#$obj_splitted = Split-NAVApplicationObjectFile -Source "$SourcePath\*.txt" -Destination "$DestinationPath\" -Force -PreserveFormatting -PassThru
+$obj_splitted = Split-NAVApplicationObjectFile -Source "$SourcePath\$Pobj_name.txt" -Destination "$DestinationPath\" -Force -PreserveFormatting -PassThru
 
 <#  per il rename #>
-foreach ($obj_file_name in $obj_splited) {
+foreach ($obj_file_name in $obj_splitted) {
     $obj_file = new-object System.IO.StreamReader($obj_file_name)
     $first_line = $obj_file.ReadLine()
     $obj_file.Close()

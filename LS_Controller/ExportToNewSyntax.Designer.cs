@@ -65,6 +65,8 @@
             this.ObjectType_label = new System.Windows.Forms.Label();
             this.ObjType_listBox = new System.Windows.Forms.ListBox();
             this.ShowOutput_button = new System.Windows.Forms.Button();
+            this.Extension_start_id_label = new System.Windows.Forms.Label();
+            this.Extension_start_id_textBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Launch
@@ -73,10 +75,10 @@
             this.Launch.BackColor = System.Drawing.SystemColors.Window;
             this.Launch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Launch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Launch.Location = new System.Drawing.Point(554, 549);
+            this.Launch.Location = new System.Drawing.Point(554, 553);
             this.Launch.Name = "Launch";
             this.Launch.Size = new System.Drawing.Size(158, 37);
-            this.Launch.TabIndex = 20;
+            this.Launch.TabIndex = 21;
             this.Launch.Text = "Lancia";
             this.Launch.UseVisualStyleBackColor = false;
             this.Launch.Click += new System.EventHandler(this.Launch_Click);
@@ -262,12 +264,13 @@
             // 
             // DeleteAllTxtFiles
             // 
+            this.DeleteAllTxtFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.DeleteAllTxtFiles.AutoSize = true;
             this.DeleteAllTxtFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeleteAllTxtFiles.Location = new System.Drawing.Point(20, 534);
+            this.DeleteAllTxtFiles.Location = new System.Drawing.Point(21, 553);
             this.DeleteAllTxtFiles.Name = "DeleteAllTxtFiles";
             this.DeleteAllTxtFiles.Size = new System.Drawing.Size(163, 21);
-            this.DeleteAllTxtFiles.TabIndex = 18;
+            this.DeleteAllTxtFiles.TabIndex = 19;
             this.DeleteAllTxtFiles.Text = "Delete All Txt Files";
             this.DeleteAllTxtFiles.UseVisualStyleBackColor = true;
             // 
@@ -341,6 +344,7 @@
             // 
             // checkedListBox
             // 
+            this.checkedListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkedListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.checkedListBox.CheckOnClick = true;
             this.checkedListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -349,11 +353,11 @@
             "Converti in AL",
             "Dividi per tipo",
             "ExportToNewSyntax"});
-            this.checkedListBox.Location = new System.Drawing.Point(274, 517);
+            this.checkedListBox.Location = new System.Drawing.Point(277, 536);
             this.checkedListBox.Name = "checkedListBox";
             this.checkedListBox.Size = new System.Drawing.Size(156, 54);
             this.checkedListBox.Sorted = true;
-            this.checkedListBox.TabIndex = 19;
+            this.checkedListBox.TabIndex = 20;
             // 
             // Date_dateTimePicker
             // 
@@ -407,13 +411,30 @@
             this.ShowOutput_button.BackColor = System.Drawing.SystemColors.Window;
             this.ShowOutput_button.Enabled = false;
             this.ShowOutput_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ShowOutput_button.Location = new System.Drawing.Point(466, 549);
+            this.ShowOutput_button.Location = new System.Drawing.Point(466, 553);
             this.ShowOutput_button.Name = "ShowOutput_button";
             this.ShowOutput_button.Size = new System.Drawing.Size(57, 37);
-            this.ShowOutput_button.TabIndex = 21;
+            this.ShowOutput_button.TabIndex = 22;
             this.ShowOutput_button.Text = "Show Output";
             this.ShowOutput_button.UseVisualStyleBackColor = false;
             this.ShowOutput_button.Click += new System.EventHandler(this.ShowOutput_button_Click);
+            // 
+            // Extension_start_id_label
+            // 
+            this.Extension_start_id_label.AutoSize = true;
+            this.Extension_start_id_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.Extension_start_id_label.Location = new System.Drawing.Point(18, 491);
+            this.Extension_start_id_label.Name = "Extension_start_id_label";
+            this.Extension_start_id_label.Size = new System.Drawing.Size(120, 17);
+            this.Extension_start_id_label.TabIndex = 37;
+            this.Extension_start_id_label.Text = "Extension Start ID";
+            // 
+            // Extension_start_id_textBox
+            // 
+            this.Extension_start_id_textBox.Location = new System.Drawing.Point(180, 491);
+            this.Extension_start_id_textBox.Name = "Extension_start_id_textBox";
+            this.Extension_start_id_textBox.Size = new System.Drawing.Size(461, 20);
+            this.Extension_start_id_textBox.TabIndex = 18;
             // 
             // ExportToNewSyntax
             // 
@@ -422,7 +443,9 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.HighlightText;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(721, 598);
+            this.ClientSize = new System.Drawing.Size(721, 602);
+            this.Controls.Add(this.Extension_start_id_textBox);
+            this.Controls.Add(this.Extension_start_id_label);
             this.Controls.Add(this.ShowOutput_button);
             this.Controls.Add(this.ObjType_listBox);
             this.Controls.Add(this.ObjectType_label);
@@ -510,6 +533,8 @@
         private System.Windows.Forms.Label ObjectType_label;
         private System.Windows.Forms.ListBox ObjType_listBox;
         private System.Windows.Forms.Button ShowOutput_button;
+        private System.Windows.Forms.Label Extension_start_id_label;
+        private System.Windows.Forms.TextBox Extension_start_id_textBox;
     }
 }
 

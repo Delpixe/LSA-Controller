@@ -36,6 +36,8 @@ param (
 #per la traduzione in AL
 [string]$BC_server_path, #Dove si trova txt2al
 [string]$AL_path, #Cartella dove andranno a finire i file .al
+[string]$extensionStartId = '',
+
 #per cancellare tutti gli altri file
 [bool]$DeleteAllTxt, #se messo a true cancella tutti i file txt
 #possibili filtri da applicare
@@ -54,7 +56,7 @@ param (
 
 )
 
-#Clear-Host #pulisce la schermata di powershell
+Clear-Host #pulisce la schermata di powershell
 Write-Output '_____________________________________________'
 Write-Output '            INIZIO LaunchAll'
 Write-Output '_____________________________________________'
@@ -147,7 +149,7 @@ foreach ($objectType in $objectTypeList) {
         }
 
         $TextToAlPath = """$OtherScriptsPath\TextToAl.ps1"""
-        $LaunchConversion = "& $TextToAlPath -BC_server_path $new_BC_server_path -TxtPath $new_DestinationPath -ALPath $new_AL_path"
+        $LaunchConversion = "& $TextToAlPath -BC_server_path $new_BC_server_path -TxtPath $new_DestinationPath -ALPath $new_AL_path --extensionStartId $extensionStartId"
         WriteLog -LogFileName $LogFileName -StringaDaScrivere  "LaunchConversion -> $LaunchConversion" #log
         Write-Output '_________s_LaunchConversion_________'
         Write-Output  "LaunchConversion -> $LaunchConversion"
@@ -160,7 +162,7 @@ foreach ($objectType in $objectTypeList) {
 #! non provato !#
 if ($DeleteAllTxt) { #se mette deleteAllTxt cancella tutte le cartelle dove finiscono i Txt 
     WriteLog -LogFileName $LogFileName -StringaDaScrivere  "DeleteAllTxt -> $DeleteAllTxt" #log
-    Write-Output  '___________s_DeleteAllTxt____________'
+    Write-Host -verbose '___________s_DeleteAllTxt____________'
     
     Remove-Item $new_DestinationPath -Recurse -Force -Confirm:$false
     Remove-Item $new_sourcePath -Recurse -Force -Confirm:$false
@@ -168,7 +170,7 @@ if ($DeleteAllTxt) { #se mette deleteAllTxt cancella tutte le cartelle dove fini
     Remove-Item -Path "$filename" -Force
     Remove-Item -Path "$new_DestinationPath" -Force
     #>
-    Write-Output  '___________e_DeleteAllTxt____________'
+    Write-Host -verbose '___________e_DeleteAllTxt____________'
 }
 
 Write-Output '_____________________________________________'

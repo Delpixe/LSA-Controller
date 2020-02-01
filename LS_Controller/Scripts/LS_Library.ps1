@@ -10,35 +10,35 @@ function Import-NAVAdminTool
     )
     $moduleManagement = Get-Module -Name 'Microsoft.Dynamics.Nav.Management'
     $moduleApp = Get-Module -Name 'Microsoft.Dynamics.Apps.Management'
-    Write-Output  'module Management name: ($moduleManagement.Name)'
-    Write-Output  'module App name: ($moduleApp.Name)'
-    Write-Output  'valore controllo : $($Force -And ($moduleManagement -Or $moduleApp) )'
+    Write-Verbose -Message 'module Management name: ($moduleManagement.Name)'
+    Write-Verbose -Message 'module App name: ($moduleApp.Name)'
+    Write-Verbose -Message 'valore controllo : $($Force -And ($moduleManagement -Or $moduleApp) )'
     if ($Force -And $moduleManagement ) 
     {
-        Write-Output "Removing module $($moduleManagement.Path)"
+        Write-Host -Object "Removing module $($moduleManagement.Path)"
         Remove-Module -Name $moduleManagement.Name -Force
     }
     if ($Force -And $moduleApp ) 
     {
-        Write-Output "Removing module $($moduleApp.Path)"
+        Write-Host -Object "Removing module $($moduleApp.Path)"
         Remove-Module -Name $moduleApp.Name -Force
     }
     if (!($moduleApp) -Or !($moduleManagement) -or ($moduleManagement.Path -ne $modulepath) -or ($Force)) 
     {
         if (!(Test-Path -Path $modulepath)) 
         {
-            Write-Output "Module $moduelpath not found!"
+            Write-Host -Object "Module $moduelpath not found!"
             return
         }
-        Write-Output "Importing NAVAdminTool from $modulepath"
+        Write-Host -Object "Importing NAVAdminTool from $modulepath"
         #Import-Module "$modulepath" -DisableNameChecking -Force -Global #-Scope_local
         $cmd = "& Import-Module """+$modulepath+""" -DisableNameChecking -Force -Global"
         Invoke-Expression $cmd
         #& $modulepath #| Out-Null
-        Write-Output  'NAV admin tool imported'
+        Write-Verbose -Message 'NAV admin tool imported'
     } else 
     {
-        Write-Output  'NAV admin tool already imported'
+        Write-Verbose -Message 'NAV admin tool already imported'
     }
     # verifica comandi 
     #Write-Output (Get-Command -Module Microsoft.Dynamics.Nav.Management, Microsoft.Dynamics.Nav.Apps.Management)
@@ -60,21 +60,21 @@ function Import-NAVModelTool
             return
         }
         if ($Global) {
-            Write-Output "Importing Globally NAVModelTool from $modulepath"
+            Write-Host -Object "Importing Globally NAVModelTool from $modulepath"
             #Import-Module "$modulepath" -DisableNameChecking -Force -Scope Global #-WarningAction SilentlyContinue | Out-Null
             $cmd = "& Import-Module """+$modulepath+""" -DisableNameChecking -Force -Scope Global"
             Invoke-Expression $cmd
-            Write-Output  'NAV model tool imported'
+            Write-Verbose -Message 'NAV model tool imported'
         } else {
-            Write-Output "Importing NAVModelTool from $modulepath"
+            Write-Host -Object "Importing NAVModelTool from $modulepath"
             #Import-Module "$modulepath" -DisableNameChecking -Force -Scope Local #-WarningAction SilentlyContinue | Out-Null
             $cmd = "& Import-Module """+$modulepath+""" -DisableNameChecking -Force -Scope Local"
             Invoke-Expression $cmd
-            Write-Output  'NAV model tool imported'
+            Write-Verbose -Message 'NAV model tool imported'
         }
     } else 
     {
-        Write-Output  'NAV model tool already imported'
+        Write-Verbose -Message 'NAV model tool already imported'
     }
 }
 
@@ -89,12 +89,12 @@ function Import-NavLib {
 
     $result = Import-NAVAdminTool -Force -modulePath $nav_service_path"NavAdminTool.ps1"
     IF ($result){
-        Write-Output  "-----------> moduli nav importati con successo!!"
+        Write-Verbose "-----------> moduli nav importati con successo!!"
         return $true
     } else {
         $result = Import-NAVModelTool -Global -modulePath $nav_client_path"NavModelTools.ps1"
         IF (!$result){
-            Write-Output  "-----------> CLIENT e/o SERVIZIO NON TRONVATO!!"
+            Write-Verbose "-----------> CLIENT e/o SERVIZIO NON TRONVATO!!"
             return $false
         }
     }

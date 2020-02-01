@@ -6,7 +6,8 @@
 param (
     [Parameter(Mandatory=$true)][string]$BC_server_path,
     [Parameter(Mandatory=$true)][string]$TxtPath,#da dove prendere il fileone .txt
-    [Parameter(Mandatory=$true)][string]$ALPath#dove andranno a finire i file
+    [Parameter(Mandatory=$true)][string]$ALPath,#dove andranno a finire i file
+    [string]$extensionStartId = ''
 )
 
 # *** BEGIN MAIN
@@ -24,16 +25,21 @@ Write-Output "$TxtPath"
 $ALPath = "--target=""$ALPath"""
 Write-Output "$ALPath"
 
-$TxtToAL = """$BC_server_path $TxtPath $ALPath ."""
+if ($extensionStartId -ne ''){
+    $extensionStartId = "--extensionStartId=""$extensionStartId"""
+    Write-Host "$extensionStartId"
+}
+
+$TxtToAL = """$BC_server_path $TxtPath $ALPath $extensionStartId ."""
 $TxtToAL = "'/c $TxtToAL"
 Write-Output  "txt2al -> $TxtToAL"
 ##################################################################################################################
 Start-Process 'cmd' -ArgumentList "$TxtToAL" -Wait
 ##################################################################################################################
 
-Write-Output '_____________________________________________'
-Write-Output '            FINITO txt2al'
-Write-Output '_____________________________________________'
+Write-Host '_____________________________________________'
+Write-Host '            FINITO txt2al'
+Write-Host '_____________________________________________'
 
 #"C:\Program Files (x86)\Microsoft Dynamics 365 Business Central\140\RoleTailored Client\txt2al.exe" --source=C:\Users\m.delpapa\Desktop\MARK\2019 12 30\MARK_DELTA\MARK\ --target=C:\Users\m.delpapa\Desktop\MARK\2019 12 30\MARK_DELTA\MARK_AL\.
 <#

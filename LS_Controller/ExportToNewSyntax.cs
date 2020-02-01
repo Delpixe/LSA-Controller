@@ -218,6 +218,9 @@ namespace LS_Controller
             if (sender.DeleteAllTxtFiles.Checked)
                 lfilterToApply += " -DeleteAllTxt " + 1;
 
+            if (sender.Extension_start_id_textBox.Text != "")
+                lfilterToApply += " -extensionStartId " + sender.Extension_start_id_textBox.Text;
+
             lfilterToApply += " -OtherScriptsPath '" + Environment.CurrentDirectory + "\\Scripts'";
 
             return lfilterToApply;
