@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LS_Controller
@@ -20,19 +13,26 @@ namespace LS_Controller
         private void NewSyntax_Click(object sender, EventArgs e)
         {
             // Create a new instance of the ExportToNewSyntax class
-            ExportToNewSyntax ExportToNewSyntax = new ExportToNewSyntax();
+            ExportToNewSyntax exportToNewSyntax = new ExportToNewSyntax();
             // Show the ExportToNewSyntax form
-            ExportToNewSyntax.Show();
+            exportToNewSyntax.Show();
+            //exportToNewSyntax.Dispose();
         }
 
         private void Upgrade_Click(object sender, EventArgs e)
         {
-
+            // Create a new instance of the ExportToNewSyntax class
+            Upgrade upgrade = new Upgrade();
+            // Show the ExportToNewSyntax form
+            upgrade.Show();
+            //upgrade.Dispose();
         }
+
 
         private void Exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
     }
 }

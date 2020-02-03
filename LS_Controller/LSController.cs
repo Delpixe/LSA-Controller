@@ -20,5 +20,6 @@ namespace LS_Controller
             Application.Run(new MainMenu());
 
         }
+
     }
 }

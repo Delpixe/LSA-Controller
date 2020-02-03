@@ -1,13 +1,13 @@
 using System;
 using System.Windows.Forms;
-using System.Management.Automation;
 using System.Text;
 
 namespace LS_Controller
 {
+
     public partial class ExportToNewSyntax : Form
     {
-        public ShowOutput Output { get; set; }
+        Functions functions = new Functions();//prendo la classe functions
         private string OutputStr { get; set; }
 
         public ExportToNewSyntax()
@@ -19,8 +19,6 @@ namespace LS_Controller
             {
                 checkedListBox.SetItemChecked(i, true);
             }
-
-            Output = new ShowOutput(); //inizializzo output
         }
 
         private void Launch_Click(object sender, EventArgs e)
@@ -32,47 +30,29 @@ namespace LS_Controller
         // Bring up a dialog to chose a folder path in which to open or save a file.
         private void NAV_Server_Path_button_Click(object sender, System.EventArgs e)
         {
-            NAV_Service_Path_Text.Text = GetFolder(NAV_Service_Path_Text.Text);
+            NAV_Service_Path_Text.Text = functions.GetFolder(NAV_Service_Path_Text.Text);
         }
 
         private void BC_Serve_Path_button_Click(object sender, EventArgs e)
         {
-            BC_Server_Path_text.Text = GetFolder(BC_Server_Path_text.Text);
+            BC_Server_Path_text.Text = functions.GetFolder(BC_Server_Path_text.Text);
         }
 
         private void AL_Path_button_Click(object sender, EventArgs e)
         {
-            AL_Path_text.Text = GetFolder(AL_Path_text.Text);
+            AL_Path_text.Text = functions.GetFolder(AL_Path_text.Text);
         }
 
         private void SingleFile_button_Click(object sender, EventArgs e)
         {
-            SingleFile_Text.Text = GetFolder(SingleFile_Text.Text);
+            SingleFile_Text.Text = functions.GetFolder(SingleFile_Text.Text);
         }
 
         private void Splitted_button_Click(object sender, EventArgs e)
         {
-            Splitted_text.Text = GetFolder(Splitted_text.Text);
+            Splitted_text.Text = functions.GetFolder(Splitted_text.Text);
         }
 
-        private string GetFolder(string pfolderName)
-        {
-            FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
-            
-            //se aveva già qualcosa di scritto, riprendo da dove ero
-            if (pfolderName != "")
-            {
-                folderBrowserDialog1.SelectedPath = pfolderName;
-            }
-
-            // Show the FolderBrowserDialog.
-            DialogResult result = folderBrowserDialog1.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                pfolderName = folderBrowserDialog1.SelectedPath;
-            }
-            return (pfolderName);
-        }
 
         private void Date_dateTimePicker_ValueChanged(object sender, EventArgs e)
         {
@@ -115,15 +95,15 @@ namespace LS_Controller
                     {
                         case "ExportToNewSyntax":
                             lLaunchType = " -LaunchType ExportToNewSyntax ";
-                            RunPowerShellCommand(lscript + lLaunchType, lsb);//lancio powershell
+                            functions.RunPowerShellCommand(lscript + lLaunchType, lsb);//lancio powershell
                             break;
                         case "Converti in AL":
                             lLaunchType = " -LaunchType TxtToAL ";
-                            RunPowerShellCommand(lscript + lLaunchType, lsb);//lancio powershell
+                            functions.RunPowerShellCommand(lscript + lLaunchType, lsb);//lancio powershell
                             break;
                         case "Dividi per tipo":
                             lLaunchType = " -LaunchType Split ";
-                            RunPowerShellCommand(lscript + lLaunchType, lsb);//lancio powershell
+                            functions.RunPowerShellCommand(lscript + lLaunchType, lsb);//lancio powershell
                             break;
                     }
                 }
@@ -131,50 +111,9 @@ namespace LS_Controller
             else
             {
                 lLaunchType = " -LaunchType All ";
-                RunPowerShellCommand(lscript + lLaunchType, lsb);//lancio powershell
+                functions.RunPowerShellCommand(lscript + lLaunchType, lsb);//lancio powershell
             }
             return lsb.ToString();
-        }
-
-        private void RunPowerShellCommand(string pscript, StringBuilder psb)
-        {
-            //psb.AppendLine(pscript);//per test
-            //return;//per test
-            /*
-             * try { 
-                if (pscript != null)
-                {
-                    Runspace runspace = RunspaceFactory.CreateRunspace();
-                    runspace.Open();
-                    Pipeline pipeline = runspace.CreatePipeline();
-                    pipeline.Commands.AddScript(pscript);
-                    pipeline.Commands.Add("Out-String");
-                    Collection<PSObject> results = pipeline.Invoke();
-                    runspace.Close();
-                    foreach (PSObject pSObject in results)
-                    {
-                        psb.AppendLine(pSObject.ToString());
-                }
-            }catch(Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                psb.AppendLine(pscript);
-            }
-            */
-            PowerShell powerShell = PowerShell.Create();
-            powerShell.AddScript(pscript);
-            powerShell.AddCommand("Out-String");
-            var results = powerShell.Invoke();
-
-            foreach (var result in results)
-            {
-                psb.AppendLine(result.ToString());
-            }
-
-            if (powerShell.Streams.Error.Count > 0)
-            {
-                psb.AppendLine(powerShell.Streams.Error.Count + " errors");
-            }
         }
 
         private string GetScriptToRun(ExportToNewSyntax sender)
@@ -228,10 +167,7 @@ namespace LS_Controller
 
         private void ShowOutput_button_Click(object sender, EventArgs e)
         {
-            Output = new ShowOutput(); //inizializzo output
-            Output.txtOutput.Clear();
-            Output.txtOutput.Text = OutputStr;
-            Output.Show();
+            functions.ShowOutput(OutputStr);
         }
     }
 }

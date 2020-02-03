@@ -58,7 +58,7 @@
             this.Controls.Add(this.txtOutput);
             this.Name = "ShowOutput";
             this.ShowIcon = false;
-            this.Text = "Output";
+            this.Text = "output";
             this.ResumeLayout(false);
             this.PerformLayout();
 

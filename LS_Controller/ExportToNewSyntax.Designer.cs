@@ -32,7 +32,6 @@
             this.Launch = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.Nav_Service_Path_Label = new System.Windows.Forms.Label();
-            this.Nav_Service_Path = new System.Windows.Forms.FolderBrowserDialog();
             this.NAV_Service_Path_Text = new System.Windows.Forms.TextBox();
             this.NAV_Service_Path_button = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -102,10 +101,6 @@
             this.Nav_Service_Path_Label.Size = new System.Drawing.Size(88, 17);
             this.Nav_Service_Path_Label.TabIndex = 2;
             this.Nav_Service_Path_Label.Text = "Service Path";
-            // 
-            // Nav_Service_Path
-            // 
-            this.Nav_Service_Path.RootFolder = System.Environment.SpecialFolder.ProgramFilesX86;
             // 
             // NAV_Service_Path_Text
             // 
@@ -415,7 +410,7 @@
             this.ShowOutput_button.Name = "ShowOutput_button";
             this.ShowOutput_button.Size = new System.Drawing.Size(57, 37);
             this.ShowOutput_button.TabIndex = 22;
-            this.ShowOutput_button.Text = "Show Output";
+            this.ShowOutput_button.Text = "Show output";
             this.ShowOutput_button.UseVisualStyleBackColor = false;
             this.ShowOutput_button.Click += new System.EventHandler(this.ShowOutput_button_Click);
             // 
@@ -500,7 +495,6 @@
         private System.Windows.Forms.Button Launch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label Nav_Service_Path_Label;
-        private System.Windows.Forms.FolderBrowserDialog Nav_Service_Path;
         private System.Windows.Forms.TextBox NAV_Service_Path_Text;
         private System.Windows.Forms.Button NAV_Service_Path_button;
         private System.Windows.Forms.Label label2;
